@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+</head>
+
+<body>
+    <div class="product-container">
+        <img src={{product.product_image}} alt="">
+        <div class="product-detail">
+            <div class="product-title">
+                <h2>{{product.product_name}}</h2>
+            </div>
+            <div class="product-description">
+                <span> {{product.product_description}}</span>
+            </div>
+            <div class="add-items">
+                <p>Add Items</p>
+                <button id="minus">−</button>
+                <input type="text" value="1" id="input" />
+                <button id="plus">+</button>
+            </div>
+            <div class="price">
+                <p id="product-value">{{product.product_price}}$</p>
+                <button class="buy-product">Buy Now</button>
+            </div>
+
+            <div class="product-star-rating">
+
+                <button class="p-star-rating">&#9734</button>
+                <button class="p-star-rating">&#9734</button>
+                <button class="p-star-rating">&#9734</button>
+                <button class="p-star-rating">&#9734</button>
+                <button class="p-star-rating">&#9734</button>
+                <p id="current-rating">0 of 5</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const plusButton = document.getElementById("plus");
+const minusButton = document.getElementById("minus");
+
+const inputData = document.getElementById("input");
+plusButton.addEventListener('click',()=>{
+    inputValue = parseInt(inputData.value);
+    inputValue = inputValue + 1;
+    inputData.value = inputValue;
+})
+
+
+minusButton.addEventListener('click',()=>{
+    inputValue = parseInt(inputData.value);
+    if(inputValue > 1 ){
+        inputValue = inputValue - 1;
+        inputData.value = inputValue;
+    }
+})
+
+
+
+const stars=document.querySelectorAll('.p-star-rating');
+const current_rating=document.getElementById("current-rating");
+
+stars.forEach((star,index)=>{
+  star.addEventListener('click',()=>{
+
+    let current_star=index+1;
+    current_rating.innerText=`${current_star} of 5`;
+
+    stars.forEach((star,i)=>{
+        if(current_star>=i+1){
+          star.innerHTML='&#9733;';
+        }else{
+          star.innerHTML='&#9734;';
+        }
+    });
+
+  });
+});
+    </script>
+</body>
+</html>

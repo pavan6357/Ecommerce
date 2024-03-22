@@ -1,0 +1,589 @@
+
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+           * {
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+           }
+           nav {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+           }
+           .logo {
+               width: 10vw;
+           }
+           nav > ul {
+               display: flex;
+               gap: 30px;
+               margin-top: 20px;
+           }
+           p  a{
+               text-decoration: none;
+               color: black;
+               font-weight: bold;
+               font-family: sans-serif;
+               font-size: 18px;
+           }
+           .profile-user-pic {
+              width: 5rem;
+              padding: 10px;
+              border-radius: 20px;
+           }
+           .profile-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.profile-container{
+background: #ffffff;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 500px;
+height: 200px;
+border-radius: 20px;
+box-shadow: 0 6px 12px rgba(30,10,58,.04);
+}
+.profile-container-pic{
+  margin-left: 60px;
+}
+.profile-container-pic img{
+  width:100px; 
+  height:100px
+}
+.profile-details{
+  width: 200px;
+  height:150px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.profile-details hr{
+  border: 0;
+  height: 1px;
+  background:#ccc;
+  margin: 15px 0 10px;
+}
+
+.mobile{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: max-content;
+  margin-top: 5px;
+}
+
+.mobile img {
+margin-right: 5px;
+}
+
+
+.email{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: max-content;
+  margin-top: 5px;
+}
+
+.email img {
+  margin-right: 5px;
+ }
+
+ .home{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: max-content;
+  margin-top: 5px;
+}
+
+.home img {
+  margin-right: 5px;
+ }
+
+
+.profile-form {
+  width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.profile-form label {
+  display: block;
+  margin-bottom: 10px;
+  color: black;
+}
+.profile-form input[type="text"], .profile-form input[type="email"], .profile-form input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.profile-form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+.profile-form button {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.profile-form button:hover {
+  background-color: #0056b3;
+}
+
+.profile-sub-menu-wrap {
+  position: absolute;
+  top: 30%;
+  right: 10%;
+  width: 320px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+
+.profile-sub-menu-wrap.open-menu {
+  max-height: 400px;
+}
+
+.profile-sub-menu {
+  background: #8CABFF;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.profile-user-info {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.profile-user-info h3 {
+  font-weight: 500;
+}
+
+.profile-user-info h5 {
+  font-weight: 500;
+  top: 65%;
+  position: absolute;
+  left: 29%;
+}
+
+.profile-user-info img {
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.profile-sub-menu hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 15px 0 10px;
+}
+
+.profile-sub-menu-link img {
+  width: 24px;
+  height: 24px;
+  background-color: #e5e5e5;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.profile-sub-menu-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #525252;
+  margin: 12px 0;
+}
+
+.profile-sub-menu-link p {
+  width: 100%;
+}
+
+.register-login-menu {
+  display: flex;
+  align-items: center;
+  background-color: #ff8a1d;  
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: #fff;  
+  font-weight: bold;
+  margin: 0 10px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+}
+
+.menu-link:hover {
+  background-color: #ff7338;  
+  color: #fff;
+}
+
+.menu-separator {
+  margin: 0 5px;
+  color: #fff;
+}
+
+
+
+
+
+
+
+/* .card-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+
+.product-rating {
+    margin-top: 8px;
+}
+
+.star-rating {
+    border: none;
+    background-color: unset;
+    color: goldenrod;
+    font-size: 1.2rem; 
+    cursor: pointer; 
+}
+
+.view-product {
+    padding: 6px 12px; 
+    border: none;
+    background-color: #007bff; 
+    color: #fff; 
+    border-radius: 4px;
+    cursor: pointer; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease; 
+}
+
+.view-product:hover {
+    background-color: #0056b3; 
+}
+.product-container {
+    background-color: #fff;
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  
+  .product-detail {
+    padding: 30px;
+    flex: 1;
+  }
+  
+  .product-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .product-description span {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .product-star-rating {
+    margin-top: 15px;
+  }
+  
+  .product-star-rating p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-right: 5px;
+  }
+  
+  .p-star-rating {
+    border: none;
+    background-color: unset;
+    color: #f1c40f;
+    font-size: 2rem;
+  }
+  
+  .add-items {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  #input {
+    width: 40px;
+    text-align: center;
+  }
+  
+  #minus,
+  #plus {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  #minus:hover,
+  #plus:hover {
+    background-color: #f5f5f5;
+  }
+  
+  
+
+  @media screen and (max-width: 600px) {
+    .product-container {
+      flex-direction: column;
+    }
+  
+    img {
+      max-width: 100%;
+      border-radius: 20px 20px 0 0;
+    }
+  
+    .product-detail {
+      padding: 20px;
+    }
+  
+    .product-title {
+      font-size: 20px;
+    }
+  
+    .product-star-rating p {
+      font-size: 16px;
+    }
+  
+    #input {
+      width: 30px;
+    }
+  
+    #minus,
+    #plus {
+      width: 25px;
+      height: 25px;
+      font-size: 14px;
+    }
+  
+    #product-value {
+      font-size: 20px;
+    }
+  
+    .buy-product {
+      font-size: 14px;
+    }
+  
+  }
+  
+.card {
+  float: left;
+}
+.card-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+
+.add-to-cart-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.cart-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px; 
+    right: -8px; 
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+.Cart {
+  width: 3rem;
+}
+.logo {
+  width: 3rem;
+  cursor: pointer;
+}
+body {
+  padding: 10px;
+}
+   </style>
+    
+  </head>
+  <body>
+    <div class="header">
+      <nav>
+          <img src="{%static 'images/shopping.png'%}" alt="" class="logo">
+          <ul>
+              <p><a href="{%url 'home-page'%}">Home</a></p>
+              <p><a href="{%url 'products' %}">Products</a></p>
+              <p><a href="#">About</a></p>
+              <p><a href="#">Contact</a></p>
+          </ul>
+          {% if user.is_authenticated %}
+          <div class="cart-icon">
+              <a href="{% url 'cart' %}" class="view-cart-link">
+                  <img src="{% static 'images/cart.jpg' %}" alt="Cart" class="Cart">
+              </a>
+                {% if cart_count == 0 %}
+                <span></span>
+                {% else %}
+                <span class="cart-count">{{ cart_count }}</span>
+          </div>
+         {% endif %}
+         {% endif %}
+          {% if user.is_authenticated %}
+          {% if request.user.profile.profile_image %}
+          <img src="{{ request.user.profile.profile_image.url}}" alt="" class="profile-user-pic"
+              onclick="toggleMenu()">
+          {% else %}
+          <img src="{% static 'images/mypic.jpg' %}" alt="Default Image" class="profile-user-pic"
+              onclick="toggleMenu()">
+          {% endif %}
+          <div class="profile-sub-menu-wrap" id="profile-subMenu">
+              <div class="profile-sub-menu">
+                  <div class="profile-user-info">
+                      {% if request.user.profile.profile_image %}
+                      <img src="{{ request.user.profile.profile_image.url}}" alt="">
+                      {% else %}
+                      <img src="{% static 'images/mypic.jpg' %}" alt="Default Image">
+                      {% endif %}
+                      <h3>{{ request.user.profile.full_name }}</h3>
+                      <h5>{{ request.user.profile.designation }}</h5>
+                  </div>
+                  <hr>
+
+                  <a href="{%url 'user-profile'%}" class="profile-sub-menu-link">
+                      <img src="{% static 'images/profile.png' %}">
+                      </img>
+                      <p>Edit Profile</p>
+                  </a>
+
+                  <a href="" class="profile-sub-menu-link">
+                      <img src="{% static 'images/settings.png' %}">
+                      </img>
+                      <p>Setting & Privacy</p>
+                  </a>
+
+                  <a href="" class="profile-sub-menu-link">
+                      <img src="{% static 'images/help.png' %}">
+                      </img>
+                      <p>Help & Support</p>
+
+                  </a>
+
+                  <a href="{%url 'logout'%}" class="profile-sub-menu-link">
+                      <img src="{% static 'images/logout.jpg' %}">
+                      </img>
+                      <p>Logout</p>
+
+                  </a>
+
+              </div>
+          </div>
+          {% else %}
+          <div class="register-login-menu">
+              <a href="{% url 'login' %}" class="menu-link">Login</a>
+              <span class="menu-separator">|</span>
+              <a href="{% url 'register' %}" class="menu-link">Register</a>
+          </div>
+          {% endif %}
+      </nav>
+      {% block content %}
+      {% endblock %}
+  </div>
+  <script>
+      let subMenu = document.getElementById("profile-subMenu")
+
+      function toggleMenu() {
+          subMenu.classList.toggle("open-menu")
+      }
+  </script>
+  <hr/>
+  <!--card-->
+  <h2 style="padding: 10px;">Product-List</h2>
+  <!--endcard-->
+    {% for dest in  products %}
+<div class="card mx-3 my-3 px-3 py-3" style="width: 18rem;">
+  <img src="{{dest.image.url}}" alt="" />
+  <div class="card-body">
+    <h5 class="card-title">{{dest.title}}</h5>
+    <p class="card-text">{{dest.description}}</p>
+    <h2 class="card-price">$ {{dest.price}}</h2>
+    <!--
+    <div class="product-star-rating">
+
+      <button class="p-star-rating">&#9734</button>
+      <button class="p-star-rating">&#9734</button>
+      <button class="p-star-rating">&#9734</button>
+      <button class="p-star-rating">&#9734</button>
+      <button class="p-star-rating">&#9734</button>
+      -->
+      <form action="{% url 'add-to-cart' dest.id %}" method="post">
+        {% csrf_token %}
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </form>
+ 
+</div>
+</div>
+{% endfor %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>
