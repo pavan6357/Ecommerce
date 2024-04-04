@@ -10,6 +10,8 @@ from django.contrib import messages
 from .models import Profile
 from django.core.files.base import ContentFile
 
+
+
 class UserProfile(View):
     template_name = 'profile.html'
 
@@ -201,4 +203,15 @@ class ProductView(View):
         all_product = Product.objects.all()
         context = {'products':all_product}
         return render(request,'product-card.html', context)
+
+
+def product_search(request):
+    query = request.GET.get('query')
+    results = []
+
+    if query:
+        products = Products.objects.filter(title__icontains=query)
+
+    return render(request, 'index.html', {'query': query, 'products': products})
+
 

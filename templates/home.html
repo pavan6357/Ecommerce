@@ -15,11 +15,44 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+           
         }
+      
+        .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .leftcolumn {   
+    float: left;
+    width: 25%;
+  }
+  
+  /* Right column */
+  .rightcolumn {
+    float: left;
+    width: 75%;
+    background-color: #f1f1f1;
+    padding-left: 20px;
+  }
+  @media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {   
+      width: 100%;
+      padding: 0;
+    }
+  }
+  .card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    
+  }
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background-color: white;
+            padding: 10px;
         }
         .logo {
             width: 10vw;
@@ -524,6 +557,10 @@ body {
                 <p><a href="{%url 'products' %}">Products</a></p>
                 <p><a href="#">About</a></p>
                 <p><a href="#">Contact</a></p>
+                <form method="GET" action="{% url 'product_search' %}">
+                  <input type="text" name="query" placeholder="Search...">
+                  <button type="submit" class="btn btn-primary">Search</button>
+                </form>
             </ul>
             {% if user.is_authenticated %}
             <div class="cart-icon">
@@ -651,6 +688,150 @@ body {
           </div>
     </div>
     <!--endcarousels-->
+ <br/>
+    <!--cards-->
+    
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Refrigerator</h2>
+      <h5>Samsung 236 L, 3 Star, Digital Inverter, Frost Free Double Door Refrigerator (RT28C3053S8/HL, Silver, Elegant Inox, 2024 Model)</h5>
+      <br/>
+        <img src="{% static 'images/refrigerator.jpg' %}" width="100%" height="100%"/>
+        <br/>
+     <a href="{% url 'products' %}" 
+     style="text-decoration: none;" id="anchor"><p>Some Where</p></a> 
+    </div>
+    <div class="card">
+      <h2>Washing Machines</h2>
+      <h5>Samsung 7 kg, 5 star, Hygiene Steam with Inbuilt Heater, Digital Inverter, Fully-Automatic Front Load Washing Machine</h5>
+      <br/>
+      <img src="{% static 'images/wachingmachine.jpg' %}" width="100%" height="100%"/>
+      <br/>
+   <a href="{% url 'products' %}" 
+   style="text-decoration: none;" id="anchor"><p>Some Where</p></a> 
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+     <fieldset>
+        <div id="div" class="text-center"><h1 style="font-size: 20px;">Shopping cart</h1></div><br/>
+        <div style="display: flex;gap: 100px;">
+        <img src="{% static 'images/shoppingcart.jpg' %}" width="250px" height="140px"/>
+        <img src="{% static 'images/microwaves.jpg' %}" width="250px" height="140px" />
+      </div>
+      <div style="display: flex; gap: 241px; margin-top: 10px;">
+        <a href="{% url 'products' %}" style="text-decoration: none;" id="anchor"><p style="font-size: 20px; color: blue; font-weight: normal; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Shoppingcart</p></a>
+        <a href="{% url 'products' %}" style="text-decoration: none;" id="anchor"><p style="font-size: 20px; color: blue; font-weight: normal; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Microwaves</p></a>
+      </div>
+      <br/>
+      <div style="display: flex;gap: 100px;">
+        <img src="{% static 'images/T-Shirts.jpg' %}" width="250px" height="140px"/>
+        <img src="{% static 'images/Shoes.jpg' %}" width="250px" height="140px" />
+      </div>
+      <div style="display: flex; gap: 287px; margin-top: 10px;">
+        <a href="{% url 'products' %}" style="text-decoration: none;" id="anchor"><p style="font-size: 20px; color: blue; font-weight: normal; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">T-Shirts</p></a>
+        <a href="{% url 'products' %}" style="text-decoration: none;" id="anchor"><p style="font-size: 20px; color: blue; font-weight: normal; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Shoes</p></a>
+      </div>
+     </fieldset>
+    </div>
+    <div class="card">
+      <h3>Popular Brands</h3><br/>
+      <div style="display: flex; gap: 90px;">
+        <a href="{% url 'products' %}" style="text-decoration: none;color: black;"><fieldset style="cursor: pointer;">
+          <img src="{% static 'images/NikeShoes (1).jpg' %}" width="250px" height="140px"/>
+          <h5>Nike Mens Running Shoes</h5>
+          <p style="color: red; font-weight: bold;">$2,099</p>
+        </fieldset></a>
+        <a href="{% url 'products' %}" style="text-decoration: none;color: black;"><fieldset style="cursor: pointer;">
+          <img src="{% static 'images/NikeShoes (2).jpg' %}" width="250px" height="140px"/>
+          <h5>Nike Mens Casual Wears</h5>
+          <p style="color: red; font-weight: bold;">$1,099</p>
+        </fieldset></a>
+        
+      </div>
+      <div style="display: flex; gap: 90px;">
+        <a href="{% url 'products' %}" style="text-decoration: none;color: black;"><fieldset style="cursor: pointer;">
+          <img src="{% static 'images/iphone.jpg' %}" width="250px" height="140px"/>
+          <h5>Apple iphone 13pro</h5>
+          <p style="color: red; font-weight: bold;">$520.00</p>
+        </fieldset></a>
+        <a href="{% url 'products' %}" style="text-decoration: none;color: black;"><fieldset style="cursor: pointer;">
+          <img src="{% static 'images/oppo.jpg' %}" width="250px" height="140px"/>
+          <h5>Oppo Mobiles</h5>
+          <p style="color: red; font-weight: bold;">$20.00</p>
+        </fieldset></a>
+      </div>
+    </div>
+    <div class="card text-center" style="height: 160px;">
+      <h3 style="margin-top: 20px;">Check Something New Brands</h3>
+      <a href="{% url 'products' %}" style="text-decoration: none;" id="anchor"><p>Click Here</p></a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>ECommerce Website</h2>
+</div>
+
+<style>
+  #anchor:hover {
+    color:red;
+  }
+  .leftcolumn {   
+  float: left;
+  width: 50%;
+}
+html {
+  padding: 10px;
+}
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 50%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+</style>
+    <!--endcards-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
